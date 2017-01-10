@@ -1,6 +1,6 @@
 [user]
-  name = Song Gao
-  email = song@gao.io
+  name = Xinyu Zhao
+  email = xinyu.zhao@gao.io
 [core]
   autocrlf = input
   safecrlf = true
@@ -21,7 +21,7 @@
 [push]
   default = nothing
 [http]
-  cookiefile = /Users/songgao/.gitcookies
+  cookiefile = /Users/xzhao/.gitcookies
 [pager]
   # diff = diff-so-fancy | less --tabs=1,5 -RFX
 	show = diff-so-fancy | less --tabs=1,5 -RFX

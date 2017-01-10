@@ -10,9 +10,9 @@ Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'flazz/vim-colorschemes'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
@@ -91,31 +91,31 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#tab_min_count = 2
 
 " vim-go
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-" let g:go_auto_type_info=1
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gb <Plug>(go-build)
-au FileType go nmap <Leader>gt <Plug>(go-test)
+" let g:go_fmt_command = "goimports"
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_interfaces = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+" " let g:go_auto_type_info=1
+" au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nmap <Leader>gb <Plug>(go-build)
+" au FileType go nmap <Leader>gt <Plug>(go-test)
 
 " syntastic for Go
 " let g:syntastic_go_checkers = ['go', 'errcheck', 'golint', 'govet']
-let g:syntastic_go_checkers = ['errcheck', 'golint', 'govet']
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['go'] }
+" let g:syntastic_go_checkers = ['errcheck', 'golint', 'govet']
+" let g:syntastic_aggregate_errors = 1
+" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['go'] }
 
 " deoplete-go
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '/home/songgao/gopath/bin/gocode'
-let g:deoplete#sources#go#package_dot = 1
-let g:deoplete#sources#go#sort_class = ['func', 'var', 'const', 'type', 'package']
-let g:deoplete#sources#go#pointer = 1
-set completeopt+=noselect
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#go#gocode_binary = '/home/songgao/gopath/bin/gocode'
+" let g:deoplete#sources#go#package_dot = 1
+" let g:deoplete#sources#go#sort_class = ['func', 'var', 'const', 'type', 'package']
+" let g:deoplete#sources#go#pointer = 1
+" set completeopt+=noselect
 
 " Dash
 :nmap <silent> <leader>d <Plug>DashSearch
