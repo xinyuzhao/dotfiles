@@ -30,6 +30,7 @@ fi
 if [ -f $HOME/envs/python3/bin/activate ]; then
   alias py3="source $HOME/envs/python3/bin/activate"
 fi
+alias note="main_instance_shell.py -n -6 -f data22 xzhao"
 
 # Go
 export GOROOT=$HOME/go

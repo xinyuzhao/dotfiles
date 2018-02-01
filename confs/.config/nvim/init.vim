@@ -2,43 +2,46 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'flazz/vim-colorschemes'
 " Plug 'fatih/vim-go'
-Plug 'amirh/HTML-AutoCloseTag'
+" Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'noc7c9/vim-iced-coffee-script'
-Plug 'dln/avro-vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'rizzatti/dash.vim'
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'noc7c9/vim-iced-coffee-script'
+" Plug 'dln/avro-vim'
 Plug 'mileszs/ack.vim'
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'metakirby5/codi.vim'
+" Plug 'SirVer/ultisnips'
 
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'jeetsukumaran/vim-buffergator'
 " Plug 'bling/vim-bufferline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 call plug#end()
 
 let mapleader="`"
 
 "" Tabs
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
-set softtabstop=2
+set softtabstop=4
 set autoindent
 
 filetype on
@@ -68,6 +71,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" CtrlP -> FZF
+nnoremap <c-p> :FZF<cr>
 
 " Visual
 syntax on
@@ -109,6 +115,9 @@ let g:airline#extensions#tabline#tab_min_count = 2
 " let g:syntastic_aggregate_errors = 1
 " let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['go'] }
 
+" syntastic for python
+let g:syntastic_python_checkers = ['qlint']
+
 " deoplete-go
 " let g:deoplete#enable_at_startup = 1
 " let g:deoplete#sources#go#gocode_binary = '/home/songgao/gopath/bin/gocode'
@@ -128,8 +137,11 @@ nmap <silent> <F4> :TagbarToggle<CR>
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_mruf_save_on_update = 1
+let g:ctrlp_mruf_max = 250
+
 
 " neovim Terminal
 tnoremap <Esc> <C-\><C-n>
@@ -144,5 +156,5 @@ au BufRead,BufNewFile *.avdl setlocal filetype=avro-idl
 
 " ack.vim
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag' " --vimgrep'
 endif
