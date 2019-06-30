@@ -30,7 +30,7 @@ Plug 'metakirby5/codi.vim'
 " Plug 'jeetsukumaran/vim-buffergator'
 " Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -81,9 +81,13 @@ set colorcolumn=80
 set showmatch
 set ruler
 set number
+set background=dark
 colorscheme hybrid_material
 set laststatus=2
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Visual: indentline
+let g:indentLine_color_term = 239
 
 " vim-airline
 let g:airline_theme = 'tomorrow'
