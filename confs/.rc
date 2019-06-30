@@ -1,27 +1,22 @@
-# Prezto aliases `rm` to `rm -i`. This un-does it.
-unalias rm
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
-# allows interactive comments
-set -k
-
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/texlive/2015/bin/x86_64-darwin/:$PATH
-
+# use GNU coreutils on macOS
 if [[ $(uname) == 'Darwin' ]]
 then
     # GNU coreutils
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
-if [[ $(uname) == 'FreeBSD' ]]
-then
-  alias ls="ls -Ghl"
+if which exa &> /dev/null; then
+  alias l='exa -gl --time-style long-iso --group-directories-first'
+  alias t='exa -gl --tree --time-style long-iso'
 else
-  alias ls="ls --color=always -hl --time-style=long-iso --group-directories-first"
+  alias l="ls --color=always -hl --time-style=long-iso --group-directories-first"
 fi
 
-alias less="less -R"
-alias grep="grep --color=always"
+alias grep="grep --color=auto"
+alias p8='ping 8.8.8.8'
 
 # Python
 if [ -f $HOME/envs/python2/bin/activate ]; then
@@ -39,7 +34,6 @@ export GOBIN=$GOPATH/bin
 export PATH=$GOROOT/bin:$GOBIN:$PATH
 alias gf="gofmt -s -w -e -l"
 if which colorgo &> /dev/null; then alias go="colorgo"; fi
-
 gprefresh() {
   go list -f "{{.Dir}}" ... 2>/dev/null | grep -v vendor > $GOPATH/.list;
 }
@@ -80,20 +74,14 @@ repodir() {
 
 # Editors
 export VISUAL="nvim"
-export EDITOR="$VISUAL"
+export EDITOR="nvim"
 alias vim=nvim
 
-# transfer.sh
-transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+# ripgrep
+alias rg="rg --colors 'match:bg:yellow' --colors 'match:fg:0xA0,0xA0,0xA0' --colors 'match:style:nobold' --colors 'path:fg:green' --colors 'path:style:intense' --colors 'line:fg:yellow' --smart-case"
 
-# neovim-remote
-if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
-  alias h='nvr -o'
-  alias v='nvr -O'
-  alias t='nvr --remote-tab'
-fi
-
-if [ -f $HOME/.rc.local ]; then
-  source $HOME/.rc.local
-fi
+# git
+alias gpull="git pull"
+alias gpo="git push origin"
+alias gc="git checkout"
+alias gs="git status"

@@ -2,32 +2,41 @@
   name = Xinyu Zhao
   email = xinyu.zhao@gao.io
 [core]
-  autocrlf = input
-  safecrlf = true
-  excludesfile = ~/.gitignore_global
-  pager = less -r
+    autocrlf = input
+    safecrlf = true
+    excludesfile = ~/.gitignore_global
 [alias]
-  co = checkout
-  cob = checkout -b
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    cob = checkout -b
+    ci = commit
+    st = status
+    br = branch
+    type = cat-file -t
+    dump = cat-file -p
+    lg = log --color --graph --abbrev-commit
+    me = log --author='Song Gao' --color --graph --abbrev-commit
+[format]
+    pretty = format:%C(yellow)%h%Creset -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [color]
-  ui = true
+    ui = true
 [push]
-  default = nothing
+    default = nothing
 [http]
   cookiefile = /Users/xzhao/.gitcookies
 [pager]
-  # diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
-
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
+[rerere]
+    enabled = 1
 [merge]
-tool = mymeld
-conflictstyle = diff3
-[mergetool "mymeld"]
-cmd = meld $LOCAL $BASE $REMOTE -o $MERGED --diff $BASE $LOCAL --diff $BASE $REMOTE --auto-merge
+    conflictstyle = diff3
+    tool = vimdiff
+[diff]
+    algorithm = patience
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
