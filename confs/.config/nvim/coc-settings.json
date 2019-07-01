@@ -11,6 +11,7 @@
   "coc.preferences.hoverTarget": "echo",
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "python.formatting.provider": "black",
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "▲",
   "diagnostic.infoSign": "•"
