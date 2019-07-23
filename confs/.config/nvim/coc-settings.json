@@ -12,6 +12,8 @@
   "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact"],
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/home/xzhao/ans/venv/bin/black",
+  "python.jediEnabled": false,
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "▲",
   "diagnostic.infoSign": "•"
